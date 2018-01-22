@@ -1,14 +1,14 @@
 # Single Page Apps for GitHub Pages
 
-[Live example][liveExample]  
+[데모 사이트][liveExample]  
 
-This is a lightweight solution for deploying single page apps with [GitHub Pages][ghPagesOverview]. You can easily deploy a [React][react] single page app with [React Router][reactRouter] `<BrowserRouter />`, like the one in the [live example][liveExample], or a single page app built with any frontend library or framework.
+[GitHub Pages][ghPagesOverview]를 사용하여 단일 페이지 응용 프로그램(SPA: single page application)을 배포하기 위한 간단한 솔루션을 제시합니다. Re[React Router][reactRouter] `<BrowserRouter />`를 사용하여 [데모 사이트][liveExample]와 같은 [React][react] 앱을 배포하거나 그 외 프론트엔드 라이브러리 및 프레임워크를 쉽게 배포할 수 있습니다.
 
-#### Why it's necessary
-GitHub Pages doesn't natively support single page apps. When there is a fresh page load for a url like `example.tld/foo`, where `/foo` is a frontend route, the GitHub Pages server returns 404 because it knows nothing of `/foo`.
+#### 왜 솔루션이 필요한가요?
+엄격히 말해 GitHub Pages는 SPA 지원하지 않기 때문에. url이 `example.tld/foo` 일 때, `/foo`가 프론트엔드 경로인 경우, GitHub 페이지 서버는 `/foo`를 모르기 때문에 404를 리턴하게 됩니다.
 
-#### How it works
-When the GitHub Pages server gets a request for a path defined with frontend routes, e.g. `example.tld/foo`, it returns a custom `404.html` page. The [custom `404.html` page contains a script][404html] that takes the current url and converts the path and query string into just a query string, and then redirects the browser to the new url with only a query string and hash fragment. For example, `example.tld/one/two?a=b&c=d#qwe`, becomes `example.tld/?p=/one/two&q=a=b~and~c=d#qwe`.
+#### 솔루션은 어떻게 작동되나요?
+GitHub Pages 서버는 프론트엔드 경로인 `example.tld/foo`를 요청받으면, `404.html`페이지를 리턴합니다. [`404.html`내 스크립트][404html]는 현재 url을 가져와 루트와 쿼리 문자열을 검색어 문자열로 변환한 다음, 쿼리 문자열(query strings)과 해시(hash)로 구성된 새 URL로 리디렉션합니다. 예를 들어 `example.tld/one/two?a=b&c=d#qwe`인 경우, `example.tld/?p=/one/two&q=a=b~and~c=d#qwe`로 변경됩니다.
 
 The GitHub Pages server receives the new request, e.g. `example.tld?p=/...`, ignores the query string and hash fragment and returns the `index.html` file, which has a [script that checks for a redirect in the query string][indexHtmlScript] before the single page app is loaded. If a redirect is present it is converted back into the correct url and added to the browser's history with `window.history.replaceState(...)`, but the browser won't attempt to load the new url. When the [single page app is loaded][indexHtmlSPA] further down in the `index.html` file, the correct url will be waiting in the browser's history for the single page app to route accordingly. (Note that these redirects are only needed with fresh page loads, and not when navigating within the single page app once it's loaded).
 
