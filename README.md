@@ -14,7 +14,7 @@
 엄격히 말해 깃헙 페이지는 SPA 지원하지 않습니다. 예를 들어 URL이 `example.tld/foo`이고 `/foo`가 프론트엔드 경로인 경우, 깃헙 페이지 서버는 `/foo`를 모르기 때문에 404에러를 반환합니다. 따라서 이를 해결해주는 방법를 아래 제시합니다. 
 
 #### 어떻게 작동되나요?
-깃헙 페이지 서버로 프론트엔드 경로인 `example.tld/foo` URL 요청을 받으면, `404.html`페이지를 리턴합니다. 이를 해결하기 위해 [`404.html` 파일에 스크립트][404html]를 만들었습니다. 이 스크립트는 현재 URL를 받아, URL의 경로(path)와 쿼리(query)에 해당하는 문자열을 모두 쿼리 문자열로 변환한 다음, 쿼리(query)와 해시(hash)로 구성된 새로운 URL을 만들어 리디렉션합니다. 예를 들어 URL이 `example.tld/one/two?a=b&c=d#qwe`인 경우, `example.tld/?p=/one/two&q=a=b~and~c=d#qwe`로 변경된다.
+깃헙 페이지 서버로 프론트엔드 경로인 `example.tld/foo` URL 요청을 받으면, `404.html`페이지를 리턴합니다. 이를 해결하기 위해 [`404.html` 파일에 스크립트][404html]를 만들었습니다. 이 스크립트는 현재 URL를 받아, URL의 경로(path)와 쿼리(query)에 해당하는 문자열을 모두 쿼리 문자열로 변환한 다음, 쿼리(query)와 해시(hash)로 구성된 새로운 URL을 만들어 리디렉션합니다. 예를 들어 URL이 `example.tld/one/two?a=b&c=d#qwe`인 경우, `example.tld/?p=/one/two&q=a=b~and~c=d#qwe`로 변경됩니다.
 
 깃헙 페이지 서버는 `example.tld?p=/...`이라는 URL을 요청을 받으면 `example.tld?p=/...`,에 포함된 쿼리와 해시 문자열을 무시하고 `index.html`을 반환합니다. `index.html` 파일에도 스크립트가 있습니다. 이 [스크립트][indexHtmlScript]는 SPA가 로드되기 전에 쿼리 문자열의 리디렉션을 확인합니다. 리다이렉트가 존재하면 올바른 URL로 다시 변환되어 `window.history.replaceState(...)`로 브라우저 히스토리에 추가되지만, 브라우저는 새로운 URL를 로드하지 않습니다. `index.html` 파일에서 [SPA가 로드 되면][indexHtmlSPA], URL이 브라우저 히스토리에 대기하여 그에 따라 SPA 경로를 지정합니다. (리디렉션은 새로운 페이지가 로드될 때만 필요합니다. 이 후 SPA 내부를 탐색하는 경우 필요하지 않습니다.)
 
