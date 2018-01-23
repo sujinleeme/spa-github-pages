@@ -35,22 +35,22 @@
       - 리디렉션 스크립트 위치는 `index.html` 파일의 SPA 스크립트 전에 있어야 합니다.
 
 ### **상세 사용 설명**
-  이 리퍼지토리를 보일러플레이트로 사용해 깃헙 페이지로 호스팅하는 방법입니다.
+  다운받은 이 리퍼지토리를 보일러플레이트로 사용해 깃헙 페이지로 호스팅하는 방법입니다.
   
-  1. 리퍼지토리를 클론합니다. (`$ git clone https://github.com/rafrex/spa-github-pages.git`)
+  1. 리퍼지토리를 클론합니다. (`$ git clone https://github.com/sujinleeme/spa-github-pages.git`)
   
-  2. `.git`디렉토리를 지우세요 (`cd` 명령어로 `spa-github-pages` 디렉토리로 들어가 `$ rm -rf .git` 명령어를 실행하세요.)
+  2. 숨김 폴더인`.git` 폴더를 지우세요 (`cd` 명령어로 `spa-github-pages` 폴더 들어가 `$ rm -rf .git` 명령어를 실행하세요.)
   
-  3. 리퍼지토리 인스턴스화 합니다.
-      - 보일러플레이트로 새 리퍼지토리를 생성하길 원하는 경우
-        - `spa-github-pages` 디렉토리에서 `$ git init` 명령어를 입력합니다 그 다음 `$ git add .`, `$ git commit -m "Add SPA for GitHub Pages boilerplate"` 명령어로 새 저장소를 초기화 합니다.
+  3. 리퍼지토리를 인스턴스화 합니다.
+      - 보일러플레이트를 새 리퍼지토리를 생성하길 원하는 경우
+        - `spa-github-pages` 폴더에서 `$ git init` 명령어를 입력합니다. 그 다음 `$ git add .`, `$ git commit -m "Add SPA for GitHub Pages boilerplate"` 명령어로 새 저장소를 초기화 합니다.
         - 프로젝트 페이지 사이트일 경우, 브랜치 이름을 `master`에서 `gh-pages`로 변경합니다. (`$ git branch -m gh-pages`). 개인 사용자 또는 기관 페이지 사이트일 경우 브랜치 이름을 `master`로 유지합니다.
         - 깃헙 홈페이지에서 빈 리퍼지토리를 생성합니다. (readme.md, .gitignore, license 파일을 추가하지 마세요) 로컬 리퍼지토리에 원격 리퍼지토리를 추가합니다. (`$ git remote add origin <your-new-github-repo-url>`)
-        - 현재 로컬 디렉토리 이름인 `spa-github-pages`를 원하는 이름으로 바꿉니다. (예 `프로젝트-이름`)
+        - 현재 로컬 폴더 이름인 `spa-github-pages`를 원하는 이름으로 바꿉니다. (예 `프로젝트-이름`)
       - 보일러플레이트를 기존 리퍼지토리의 `gh-pages` 브랜치로 추가하는 경우
         - 기존 리퍼지토리에서 부모 커밋이 없는 새로운 브랜치인 `gh-pages`를 만듭니다 (`$ git checkout --orphan gh-pages`). 첫 커밋 전까지 `gh-pages`에 브랜치 리스트가 없어야 합니다.
-        - 기존 리퍼지토리 디렉토리에서  `.git` 디렉토리를 제외한 모든 파일과 폴더를 삭제합니다. (`$ git rm -rf .`)
-        - 새로운 `프로젝트-디렉토리`를 만들고 `spa-github-pages`폴더에 있는 모든 파일(숨김 파일 포함)과 폴더를 복사해 새 폴더로 복사합니다. (`$ mv path/to/spa-github-pages/{.[!.],}* path/to/프로젝트-디렉토리`)
+        - 기존 리퍼지토리 폴더에서  `.git` 폴더를 제외한 모든 파일과 폴더를 삭제합니다. (`$ git rm -rf .`)
+        - 새로운 `프로젝트-폴더`를 만들고 `spa-github-pages`폴더에 있는 모든 파일(숨김 파일 포함)과 폴더를 복사해 새 폴더로 복사합니다. (`$ mv path/to/spa-github-pages/{.[!.],}* path/to/프로젝트-폴더`)
         - `$ git add .` 명령어를 입력하고 `gh-pages`브랜치를 인스턴스화 하기 위해 `$ git commit -m "Add SPA for GitHub Pages boilerplate"` 명령어를 입력합니다.
   
   4. (옵션) 커스텀 도메인 설정 - [[GitHub Pages] 커스텀 도메인 설정][customDomain] 가이드를 참고하세요.
