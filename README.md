@@ -1,8 +1,8 @@
 # 깃헙 페이지(GitHub Pages)에 SPA 호스팅 하기
 
-[Single Page Apps for GitHub Pages](https://github.com/rafrex/spa-github-pages)를 번역했습니다. 
+원문 : [Rafael Pedicini](https://github.com/rafrex) -  [Single Page Apps for GitHub Pages](https://github.com/rafrex/spa-github-pages) 
 
-번역 : 이수진(@sujinleeme)
+번역 : 이수진([@sujinleeme](https://github.com/sujinleeme))
 
 ----
 
@@ -11,7 +11,7 @@
  단일 페이지 응용 프로그램(SPA: single page application)을 [깃헙 페이지(GitHub Pages)][ghPagesOverview]에 배포할 수 있는 방법을 소개합니다. [React Router][reactRouter]의 `<BrowserRouter />`를 사용하면 [데모 사이트][liveExample]와 같은 [리액트][react], 그 외 프론트엔드 라이브러리 및 프레임워크를 사용한 애플리케이션을 쉽게 배포할 수 있습니다.
 
 #### 왜 필요한가요?
-사실 엄격히 말해 깃헙 페이지는 SPA 지원하지 않습니다. 예를 들어 URL이 `example.tld/foo`이고 `/foo`가 프론트엔드 경로인 경우, 깃헙 페이지 서버는 `/foo`를 모르기 때문에 404에러를 반환합니다. 따라서 이를 해결해주는 방법를 아래 제시합니다. 
+엄격히 말해 깃헙 페이지는 SPA 지원하지 않습니다. 예를 들어 URL이 `example.tld/foo`이고 `/foo`가 프론트엔드 경로인 경우, 깃헙 페이지 서버는 `/foo`를 모르기 때문에 404에러를 반환합니다. 따라서 이를 해결해주는 방법를 아래 제시합니다. 
 
 #### 어떻게 작동되나요?
 깃헙 페이지 서버로 프론트엔드 경로인 `example.tld/foo` URL 요청을 받으면, `404.html`페이지를 리턴합니다. 이를 해결하기 위해 [`404.html` 파일에 스크립트][404html]를 만들었습니다. 이 스크립트는 현재 URL를 받아, URL의 경로(path)와 쿼리(query)에 해당하는 문자열을 모두 쿼리 문자열로 변환한 다음, 쿼리(query)와 해시(hash)로 구성된 새로운 URL을 만들어 리디렉션합니다. 예를 들어 URL이 `example.tld/one/two?a=b&c=d#qwe`인 경우, `example.tld/?p=/one/two&q=a=b~and~c=d#qwe`로 변경된다.
