@@ -29,8 +29,7 @@
   이미 만들어진 리퍼지토리에 내용을 추가해 깃헙 페이지를 호스팅하는 방법입니다.
   
   1. 작업 중인 리퍼지토리에 `404.html`파일을 만들고 [`404.html`][404html]에 있는 내용을 복사 붙여넣기 합니다.
-      - [커스텀 도메인][customDomain]을 사용하지 않은 경우  (사이트 주소는 `유저네임.github.io/리퍼지토리-이름` 입니다) [`404.html` 파일에 있는 `segmentCount` 변수를 `1`로 설정하세요.][segmentCount] 리디렉션된 후 루트 내 `/리퍼지토리-이름`를 유지하게 됩니다.
-  
+      - [커스텀 도메인][customDomain]을 사용하지 않고 프로젝트 페이지로 사용할 경우(예로 `username.github.io/repo-name` 형식의 주소를 사용할 경우) [`404.html` 파일에 있는 `segmentCount` 변수를 `1`로 설정하세요.][segmentCount] 리디렉션된 후 루트 내 `/repo-name`를 유지하게 됩니다.
   2. `index.html`파일 내 [리디렉션 스크립트][indexHtmlScript]부분을 복사해 `index.html` 파일에 추가합니다.
       - 리디렉션 스크립트 위치는 `index.html` 파일의 SPA 스크립트 전에 있어야 합니다.
 
@@ -61,14 +60,14 @@
   5. (옵션) 커스텀 도메인 없이 설정 
       -  [`CNAME` 파일][cnameFile]을 삭제합니다.
       - 사용자 또는 조직 페이지 사이트를 만드는 경우 필요한 작업은 이 것으로 마칩니다.
-      - 프로젝트 페이지 사이트를 생성을 하고 싶다면 (사이트 주소는 `유저네임.github.io/리퍼지토리-이름` 입니다):
-        - [`404.html` 파일에 있는 `segmentCount` 변수를 `1`로 설정하세요.][segmentCount] 리디렉션된 후 루트 내 `/리퍼지토리-이름`를 유지하기 위함입니다.
+      - 프로젝트 페이지 사이트를 생성을 하고 싶다면 (사이트 주소는 `username.github.io/repo-name` 입니다):
+        - [`404.html` 파일에 있는 `segmentCount` 변수를 `1`로 설정하세요.][segmentCount] 리디렉션된 후 루트 내 `/repo-name`를 유지하기 위함입니다.
         -`index.html`파일 내 [리디렉션 스크립트][indexHtmlScript]부분을 복사해 `index.html` 파일에 추가합니다.
           - 리디렉션 스크립트 위치는 `index.html` 파일의 SPA 스크립트 전에 있어야 합니다.
         - `index.html` 에 절대 경로에 `리퍼지토리-이름` 이름을 추가합니다.
-          - [bundle.js 파일의 src 경로 부분을][indexHtmlSPA] to `"/리퍼지토리-이름/build/bundle.js"`으로 수정합니다.
-        - React Router를 사용하는 경우, `basename` prop에  `리퍼지토리 이름`을 추가해야합니다. 예를 들어 `<BrowserRouter basename="/리퍼지토리-이름" />` 이라고 URL의 `basename`을 설정합니다.
-  
+          - [bundle.js 파일의 src 경로 부분을][indexHtmlSPA] to `"/repo-name/build/bundle.js"`으로 수정합니다.
+        - React Router를 사용하는 경우, `basename` prop에  `리퍼지토리 이름`을 추가해야합니다. 예를 들어 `<BrowserRouter basename="/repo-name" />` 이라고 URL의 `basename`을 설정합니다.
+
   6. `$ npm install`로 리액트와 의존성 패키지를 설치합니다. 이후 `$ npm run build`로 빌드 내용을 업데이트 합니다.
   
   7. `$ git add .` 명령어 입력 후, `$ git commit -m "Update boilerplate for use with my domain"` 커밋 메세지를 작성하고, 깃헙으로 푸쉬합니다. (프로젝트 페이지일 경우 `$ git push origin gh-pages` 를 입력, 사용자 또는 기관 페이지일 경우 `$ git push origin master`를 입력) 도메인에 사이트가 게시되어야 합니다.
