@@ -11,12 +11,12 @@
  단일 페이지 응용 프로그램(SPA: single page application)을 [깃헙 페이지(GitHub Pages)][ghPagesOverview]에 배포할 수 있는 방법을 소개합니다. [React Router][reactRouter]의 `<BrowserRouter />`를 사용하면 [데모 사이트][liveExample]와 같은 [리액트][react], 그 외 프론트엔드 라이브러리 및 프레임워크를 사용한 애플리케이션을 쉽게 배포할 수 있습니다.
 
 #### 왜 필요한가요?
-엄격히 말해 깃헙 페이지는 SPA 지원하지 않습니다. 예를 들어 URL이 `example.tld/foo`이고 `/foo`가 프론트엔드 경로인 경우, 깃헙 페이지 서버는 `/foo`를 모르기 때문에 404에러를 반환합니다. 따라서 이를 해결해주는 방법를 아래 제시합니다. 
+엄격히 말해 깃헙 페이지는 SPA를 지원하지 않습니다. 예를 들어 URL이 `example.tld/foo`이고 `/foo`가 프론트엔드 경로인 경우, 깃헙 페이지 서버는 `/foo`를 모르기 때문에 404에러를 반환합니다. 따라서 이를 해결해주는 방법를 아래 제시합니다. 
 
 #### 어떻게 작동되나요?
 깃헙 페이지 서버로 프론트엔드 경로인 `example.tld/foo` URL 요청을 받으면, `404.html`페이지를 리턴합니다. 이를 해결하기 위해 [`404.html` 파일에 스크립트][404html]를 만들었습니다. 이 스크립트는 현재 URL를 받아, URL의 경로(path)와 쿼리(query)에 해당하는 문자열을 모두 쿼리 문자열로 변환한 다음, 쿼리(query)와 해시(hash)로 구성된 새로운 URL을 만들어 리디렉션합니다. 예를 들어 URL이 `example.tld/one/two?a=b&c=d#qwe`인 경우, `example.tld/?p=/one/two&q=a=b~and~c=d#qwe`로 변경됩니다.
 
-깃헙 페이지 서버는 `example.tld?p=/...`이라는 URL을 요청을 받으면 `example.tld?p=/...`,에 포함된 쿼리와 해시 문자열을 무시하고 `index.html`을 반환합니다. `index.html` 파일에도 스크립트가 있습니다. 이 [스크립트][indexHtmlScript]는 SPA가 로드되기 전에 쿼리 문자열의 리디렉션을 확인합니다. 리다이렉트가 존재하면 올바른 URL로 다시 변환되어 `window.history.replaceState(...)`로 브라우저 히스토리에 추가되지만, 브라우저는 새로운 URL를 로드하지 않습니다. `index.html` 파일에서 [SPA가 로드 되면][indexHtmlSPA], URL이 브라우저 히스토리에 대기하여 그에 따라 SPA 경로를 지정합니다. (리디렉션은 새로운 페이지가 로드될 때만 필요합니다. 이 후 SPA 내부를 탐색하는 경우 필요하지 않습니다.)
+깃헙 페이지 서버는 `example.tld?p=/...`이라는 URL을 요청받으면 `example.tld?p=/...`,에 포함된 쿼리와 해시 문자열을 무시하고 `index.html`을 반환합니다. `index.html` 파일에도 스크립트가 있습니다. 이 [스크립트][indexHtmlScript]는 SPA가 로드되기 전에 쿼리 문자열의 리디렉션을 확인합니다. 리다이렉트가 존재하면 올바른 URL로 다시 변환되어 `window.history.replaceState(...)`로 브라우저 히스토리에 추가되지만, 브라우저는 새로운 URL를 로드하지 않습니다. `index.html` 파일에서 [SPA가 로드되면][indexHtmlSPA], URL이 브라우저 히스토리에 대기하여 그에 따라 SPA 경로를 지정합니다. (리디렉션은 새로운 페이지가 로드될 때만 필요합니다. 이 후 SPA 내부를 탐색하는 경우 필요하지 않습니다.)
 
 #### SEO  
 물론 404을 반환하는 것은 절대로 좋은 방법은 아닙니다. [서치 엔진 랜드(Search Engine Land) 가 실시한 테스트][seoLand]에 따르면, 구글 크롤러는 `404.html` 파일의 자바스크립트 `window.location`을 처리하는데, 이는 검색 색인 생성을 위한 301 리디렉션과 동일하다고 말했습니다. 301 리디렉션(Permanent Redirect: 영구 전송)은 URL(A)가 URL(B)로 설정될 경우 콘텐츠도 URL도 새로운 B를 대상으로 표시합니다. 추가로 개인 테스트를 통해 구글이 문제없이 모든 페이지를 색인하여 검색에 반영하는 것을 확인했습니다. 다만 주의할 점은 리다이렉트 쿼리는 구글의 URL 색인 방식을 따라야 한다는 것입니다. 예를 들어, `example.tld/about`은`example.tld/?p=/about`로 색인화 됩니다. 사용자가 검색 결과를 클릭하면, url은 `example.tld/about`로 다시 바뀝니다.
@@ -34,7 +34,7 @@
       - 리디렉션 스크립트 위치는 `index.html` 파일의 SPA 스크립트 전에 있어야 합니다.
 
 ### **상세 사용 설명**
-  다운받은 이 리퍼지토리를 보일러플레이트로 사용해 깃헙 페이지로 호스팅하는 방법입니다.
+  다운받은 이 리퍼지토리를 보일러플레이트로 사용해 깃헙 페이지에 호스팅하는 방법입니다.
   
   1. 리퍼지토리를 클론합니다. (`$ git clone https://github.com/sujinleeme/spa-github-pages.git`)
   
