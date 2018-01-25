@@ -1,4 +1,4 @@
-# 깃헙 페이지(GitHub Pages)에 SPA 호스팅 하기
+# 깃헙 페이지(GitHub Pages)에 SPA 배포/호스팅 하기
 
 원문 : [Rafael Pedicini](https://github.com/rafrex) -  [Single Page Apps for GitHub Pages](https://github.com/rafrex/spa-github-pages) 
 
@@ -8,7 +8,7 @@
 
 [데모 사이트][liveExample]를 먼저 확인하세요.  
  
- 단일 페이지 응용 프로그램(SPA: single page application)을 [깃헙 페이지(GitHub Pages)][ghPagesOverview]에 배포할 수 있는 방법을 소개합니다. [React Router][reactRouter]의 `<BrowserRouter />`를 사용하면 [데모 사이트][liveExample]와 같은 [리액트][react], 그 외 프론트엔드 라이브러리 및 프레임워크를 사용한 애플리케이션을 쉽게 배포할 수 있습니다.
+ 단일 페이지 응용 프로그램(SPA: Single Page Application)을 [깃헙 페이지(GitHub Pages)][ghPagesOverview]에 배포할 수 있는 방법을 소개합니다. [React Router][reactRouter]의 `<BrowserRouter />`를 사용하면 [데모 사이트][liveExample]와 같은 [리액트][react], 그 외 프론트엔드 라이브러리 및 프레임워크를 사용한 애플리케이션을 쉽게 배포할 수 있습니다.
 
 #### 왜 필요한가요?
 엄격히 말해 깃헙 페이지는 SPA를 지원하지 않습니다. 예를 들어 URL이 `example.tld/foo`이고 `/foo`가 프론트엔드 경로인 경우, 깃헙 페이지 서버는 `/foo`를 모르기 때문에 404에러를 반환합니다. 따라서 이를 해결해주는 방법를 아래 제시합니다. 
