@@ -75,7 +75,7 @@
   8. 내 사이트를 만들어 보세요
       - 리액트 컴포넌트를 작성하고, 라우터를 추가하고, 스타일링을 적용해보세요.
         - 데모 사이트는 인라인 스타일로 작성되었으며 링크와 인터렉티브 컴포넌트는 [React Interactive][reactInteractive]를 사용해 만들었습니다 (`index.html` 파일 내 기본 스타일링을 초기화하는 CSS 스크립트를 제외하고, 별도 CSS 파일은 없습니다)
-      - 사이트 제목을 수정해보세요. [`index.html`파일 내 title][indexHtmlTitle]과 [ `404.html` 파일 내  title][404htmlTitle]를 수정하세요.
+      - 사이트 제목을 수정해보세요. [`index.html`파일 내 title][indexHtmlTitle]과 [`404.html` 파일 내 title][404htmlTitle]를 수정하세요.
       - `index.html` 파일의 header의 [favicon links][favicon]를 삭제하세요.
       - readme, license, `package.json`을 수정해보세요.
       - 개발 환경에서 변경 사항을 테스팅해보세요.
@@ -85,7 +85,7 @@
 개발 환경에서 `$ npm start` 명령어로 로컬 서버를 실행합니다. `webpack-dev-server`이 적용되어 있습니다. `webpack-dev-server`는 소스 파일을 주시하고 있다 변경이 감지되면 변경된 모듈만 새로 번들링되어 디스크에는 번들 파일이 저장되지 않습니다. 
   - `package.json`파일 내 [script][startScript]에서 `$ npm start`를 확인할 수 있습니다. 명령어 입력 시 `$ webpack-dev-server --devtool eval-source-map --history-api-fallback --open`를 실행합니다.
   - `-devtool eval-source-map`은 개발 중 [소스 맵 생성(generating source maps)][webpackDevtool]을 합니다.
-  - `--history-api-fallback`은 프론트엔드 라우팅을 허용하고 요청된 파일을 찾을 수 없을 때 'index.html'이 서빙됩니다.
+  - `--history-api-fallback`은 프론트엔드 라우팅을 허용하고 요청된 파일을 찾을 수 없을 때 `index.html`이 서빙됩니다.
   - `--open` 은 브라우저에 사이트가 자동으로 열립니다.
 - `webpack-dev-server`는 `http://localhost:8080`에서  `index.html`를 제공합니다. (기본 포트 번호는 `8080` 입니다.) 브라우저가 아닌, 서버에서 먼저 `index.html`를 읽어야 합니다. 반대로 브라우저에서 바로 열 경우 스크립트가 로드되지 않습니다.
 
