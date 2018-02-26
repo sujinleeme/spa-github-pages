@@ -8,7 +8,7 @@
 
 시작하기 전 [데모 사이트][liveExample]를 확인하세요.  
  
- 단일 페이지 응용 프로그램(SPA: Single Page Application)을 [깃허브 페이지(GitHub Pages)][ghPagesOverview]에 배포할 수 있는 방법을 소개합니다. [리액트 라우터(React Router)][reactRouter]의 `<BrowserRouter />`를 사용하면 [데모 사이트][liveExample]와 같은 [리액트(react][react], 그 외 프론트엔드 라이브러리 및 프레임워크를 사용한 애플리케이션을 쉽게 배포할 수 있습니다.
+ 단일 페이지 응용 프로그램(SPA: Single Page Application)을 [깃허브 페이지(GitHub Pages)][ghPagesOverview]에 배포할 수 있는 방법을 소개합니다. [리액트 라우터(React Router)][reactRouter]의 `<BrowserRouter />`를 사용하면 [데모 사이트][liveExample]와 같은 [리액트(react)][react], 그 외 프론트엔드 라이브러리 및 프레임워크를 사용한 애플리케이션을 쉽게 배포할 수 있습니다.
 
 #### 왜 필요한가요?
 엄격히 말해 깃허브 페이지는 SPA를 지원하지 않습니다. 예를 들어 URL이 `example.tld/foo`이고 `/foo`가 프론트엔드 경로인 경우, 깃허브 페이지 서버는 `/foo`를 모르기 때문에 404 에러를 반환합니다. 이 문제를 해결하는 방법을 아래 제시합니다. 
@@ -60,27 +60,25 @@
         
   5. (옵션) 커스텀 도메인 없이 설정 
       -  [`CNAME` 파일][cnameFile]을 삭제합니다.
-      - 사용자 또는 조직 페이지 사이트를 만드는 경우 필요한 작업은 이 것으로 마칩니다.
-      - 프로젝트 페이지 사이트를 생성을 하고 싶다면 (사이트 주소는 `username.github.io/repo-name` 입니다):
+      - 사용자 또는 조직 페이지 사이트를 만드는 경우, 이 것으로 마치면 됩니다.
+      - 프로젝트 페이지 사이트를 생성을 하고 싶다면 아래와 같이 하세요. (사이트 주소는 `username.github.io/repo-name` 입니다.) 
         - [`404.html` 파일에 있는 `segmentCount` 변수를 `1`로 설정하세요.][segmentCount] 리디렉션된 후 루트 내 `/repo-name`를 유지하기 위함입니다.
-        -`index.html` 파일 내 [리디렉션 스크립트][indexHtmlScript] 부분을 복사해 `index.html` 파일에 추가합니다.
-        - 리디렉션 스크립트 위치는 `index.html` 파일의 SPA 스크립트 전에 있어야 합니다.
-        - `index.html` 파일의 절대 경로에 `리퍼지토리-이름` 이름을 추가합니다.
-          - [bundle.js 파일의 src 경로 부분을][indexHtmlSPA] to `"/repo-name/build/bundle.js"`으로 수정합니다.
-        - 리액트 라우터(React Router)를 사용하는 경우, `basename` prop에 `리퍼지토리 이름`을 추가해야 합니다. 예를 들어 `<BrowserRouter basename="/repo-name" />` 이라고 URL의 `basename`을 설정합니다.
+        - `index.html` 파일 내 [리디렉션 스크립트][indexHtmlScript] 부분을 복사해 `index.html` 파일에 추가합니다.
+            - [bundle.js 파일의 src 경로 부분을][indexHtmlSPA] to `"/repo-name/build/bundle.js"`으로 수정합니다.
+        - 리액트 라우터(React Router)를 사용하는 경우, `basename` prop에 `repo-name`을 추가해야 합니다. 예를 들어 `<BrowserRouter basename="/repo-name" />` 이라고 URL의 `basename`을 설정합니다.
 
   6. `$ npm install`로 리액트와 의존성 패키지를 설치합니다. 이후 `$ npm run build`로 빌드 내용을 업데이트합니다.
   
-  7. `$ git add .` 명령어 입력 후, `$ git commit -m "Update boilerplate for use with my domain"` 커밋 메시지를 작성하고, 깃허브에 푸시합니다. (프로젝트 페이지일 경우 `$ git push origin gh-pages` 를 입력, 사용자 또는 기관 페이지일 경우 `$ git push origin master`를 입력) 도메인에 사이트가 게시되어야 합니다.
+  7. `$ git add .` 명령어 입력 후, `$ git commit -m "Update boilerplate for use with my domain"` 커밋 메시지를 작성하고, 깃허브에 푸시합니다. (프로젝트 페이지일 경우 `$ git push origin gh-pages` 를 입력, 사용자 또는 기관 페이지일 경우 `$ git push origin master`를 입력) 도메인에 사이트가 게시되어야 합니다.
   
   8. 내 사이트를 만들어 보세요.
       - 리액트 컴포넌트를 작성하고, 라우터를 추가하고, 스타일링을 적용해보세요.
         - 데모 사이트는 인라인 스타일로 작성되었으며 링크와 인터렉티브 컴포넌트는 [React Interactive][reactInteractive]를 사용해 만들었습니다. (`index.html` 파일 내 기본 스타일링을 초기화하는 CSS 스크립트를 제외하고, 별도 CSS 파일은 없습니다.)
-      - 사이트 제목을 수정해보세요. [`index.html` 파일 중 `title`][indexHtmlTitle]과 [`404.html` 파일 내 `title`][404htmlTitle]를 수정하세요.
-      - `index.html` 파일에서 `header`에 있는 [favicon links][favicon]를 삭제하세요.
-      - `readme.md`, `.gitignore`, `license` 파일 내용을 수정하세요.
-      - 개발 환경에서 변경 사항을 테스트하세요.
-      - 수정 내용을 깃허브 페이지에 반영하기 위해 `$ npm run build` (이 명령어는 [프로덕션][webpackProduction]을 위해 `webpack -p`를 실행합니다.) 으로 빌드 내용을 업데이트 하고, `$ git commit` 커밋 후 `$ git push` 푸시합니다.
+      - 사이트 제목을 수정해보세요. [`index.html` 파일 중 `title`][indexHtmlTitle]과 [`404.html` 파일 내 `title`][404htmlTitle]를 수정하세요.
+     - `index.html` 파일에서 `header`에 있는 [favicon links][favicon]를 삭제하세요.
+     - `readme.md`, `.gitignore`, `license` 파일 내용을 수정하세요.
+     - 개발 환경에서 변경 사항을 테스트하세요.
+     - 수정 내용을 깃허브 페이지에 반영하기 위해 `$ npm run build` (이 명령어는 [프로덕션][webpackProduction]을 위해 `webpack -p`를 실행합니다.) 으로 빌드 내용을 업데이트 하고, `$ git commit` 커밋 후 `$ git push` 푸시합니다.
 
 #### 개발 환경
 개발 환경에서 `$ npm start` 명령어로 로컬 서버를 실행합니다. `webpack-dev-server`이 적용되어 있습니다. `webpack-dev-server`는 소스 파일을 주시하고 있다 변경이 감지되면 변경된 모듈만 새로 번들링 되어 디스크에는 번들 파일이 저장되지 않습니다. 
