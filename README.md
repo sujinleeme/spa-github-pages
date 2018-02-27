@@ -28,8 +28,8 @@
 ### **기본 사용 설명** 
   이미 만들어진 리퍼지토리에 내용을 추가해 깃허브 페이지를 호스팅 하는 방법입니다.
   
-  1. 작업 중인 리퍼지토리에 `404.html`파일을 만들고 [`404.html`][404 html]에 있는 내용을 복사 붙여 넣기 합니다. 
-     - [커스텀 도메인][customDomain]을 사용하지 않고 프로젝트 페이지로 사용할 경우 (예를 들어 `username.github.io/repo-name` 형식의 주소를 사용할 경우) [`404.html` 파일에 있는 `segmentCount` 변수를 `1`로 설정하세요.][segmentCount] 리디렉션 된 후 루트 내 `/repo-name`를 유지하게 됩니다. 
+  1. 작업 중인 리퍼지토리에 `404.html`파일을 만들고 [`404.html`][404html]에 있는 내용을 복사 붙여 넣기 합니다. 
+     - [커스텀 도메인][customDomain]을 사용하지 않고 프로젝트 페이지로 사용할 경우 (예를 들어 `username.github.io/repo-name` 형식의 주소를 사용할 경우) [`404.html` 파일의 `segmentCount` 변수를 `1`로 설정하세요.][segmentCount] 리디렉션 된 후 루트 내 `/repo-name`를 유지하게 됩니다. 
   2. `index.html`파일 내 [리디렉션 스크립트][indexHtmlScript] 부분을 복사해 `index.html` 파일에 추가합니다. 
      - 리디렉션 스크립트 위치는 `index.html` 파일의 SPA 스크립트 전에 있어야 합니다.
 
