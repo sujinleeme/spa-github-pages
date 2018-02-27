@@ -29,7 +29,7 @@
   이미 만들어진 리퍼지토리에 내용을 추가해 깃허브 페이지를 호스팅 하는 방법입니다.
   
   1. 작업 중인 리퍼지토리에 `404.html`파일을 만들고 [`404.html`][404html]에 있는 내용을 복사 붙여 넣기 합니다. 
-     - [커스텀 도메인][customDomain]을 사용하지 않고 프로젝트 페이지로 사용할 경우 (예를 들어 `username.github.io/repo-name` 형식의 주소를 사용할 경우) [`404.html` 파일의 `segmentCount` 변수를 `1`로 설정하세요.][segmentCount] 리디렉션 된 후 루트 내 `/repo-name`를 유지하게 됩니다. 
+     - [커스텀 도메인][customDomain]을 사용하지 않고 프로젝트 페이지로 사용할 경우 (예를 들어 `username.github.io/repo-name` 형식의 주소를 사용할 경우) [`404.html` 파일의 `segmentCount` 변수를 `1`로 설정하세요.][segmentCount] 리디렉션 된 후 루트 내 `/repo-name`를 유지하게 됩니다. 
   2. `index.html`파일 내 [리디렉션 스크립트][indexHtmlScript] 부분을 복사해 `index.html` 파일에 추가합니다. 
      - 리디렉션 스크립트 위치는 `index.html` 파일의 SPA 스크립트 전에 있어야 합니다.
 
@@ -53,8 +53,9 @@
         - 새로운 `프로젝트-폴더`를 만들고 `spa-github-pages`폴더에 있는 모든 파일(숨김 파일 포함)과 폴더를 복사해 새 폴더로 복사합니다. (`$ mv path/to/spa-github-pages/{.[!.],}* path/to/프로젝트-폴더`)
         - `$ git add .` 명령어를 입력하고 `gh-pages`브랜치를 인스턴스화 하기 위해 `$ git commit -m "Add SPA for GitHub Pages boilerplate"` 명령어를 입력합니다.
   
-  4. (옵션) 커스텀 도메인 설정 - [[GitHub Pages] 커스텀 도메인 설정][customDomain] 가이드를 참고하세요.
-      - Update the  [`CNAME` 파일][cnameFile]에 `http://`을 제외한 커스텀 도메인을 업데이트하세요. `서브도메인`과  `www`는 추가가능합니다.
+  4. (옵션) 커스텀 도메인 설정
+      - [[GitHub Pages] 커스텀 도메인 설정][customDomain] 가이드를 참고하세요.
+      - [`CNAME` 파일][cnameFile]에 `http://`을 제외한 커스텀 도메인을 업데이트하세요. `서브도메인`과  `www`는 추가할 수 .
       -`CNAME` 파일 또는 `A` 레코드에 DNS 공급자를 업데이트 하세요.
       - `$ dig your-subdomain.your-domain.tld` 명령어를 실행해 DNS가 올바르게 설정되어 있는지 확인하세요. (명령어에 `http://`를 제외합니다.)
         
