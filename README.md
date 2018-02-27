@@ -91,7 +91,7 @@
 
 #### 그 외
 - 리퍼지토리 내 `.nojekyll` 파일은 [깃허브 페이지의 지킬(Jekyll)][nojekyll] 사용을 제거합니다.
-- 정적 웹사이트에 폼 제출(form submission) 기능이 필요하다면 [Formspree][폼즈프리(formspree)]을 사용해보세요.
+- 정적 웹사이트에 폼 제출(form submission) 기능이 필요하다면 [폼즈프리(formspree)][formspree]을 사용해보세요.
 - 깃허브 페이지 CDN의 가장 좋은 점은 모든 파일이 gzip으로 자동 압축된다는 것입니다. 프로덕션 환경을 위해 별도로 HTML, 자바스크립트, CSS 파일을 압축하지 않아도 됩니다.
 
 
