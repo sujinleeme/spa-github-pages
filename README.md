@@ -54,10 +54,10 @@
         - `$ git add .` 명령어를 입력하고 `gh-pages`브랜치를 인스턴스화 하기 위해 `$ git commit -m "Add SPA for GitHub Pages boilerplate"` 명령어를 입력합니다.
   
   4. (옵션) 커스텀 도메인 설정
-      - [[GitHub Pages] 커스텀 도메인 설정][customDomain] 가이드를 참고하세요.
-      - [`CNAME` 파일][cnameFile]에 `http://`을 제외한 커스텀 도메인을 업데이트하세요. `서브도메인`과  `www`는 추가할 수 .
-      -`CNAME` 파일 또는 `A` 레코드에 DNS 공급자를 업데이트 하세요.
-      - `$ dig your-subdomain.your-domain.tld` 명령어를 실행해 DNS가 올바르게 설정되어 있는지 확인하세요. (명령어에 `http://`를 제외합니다.)
+       - [[깃허브 페이지] 커스텀 도메인 설정][customDomain] 가이드를 참고하세요. 
+       - [`CNAME` 파일][cnameFile]에 `http://`을 제외한 커스텀 도메인을 업데이트하세요. `서브도메인`과  `www`를 추가할 수 있습니다.
+       - `CNAME` 파일 또는 `A` 레코드에 DNS 공급자를 업데이트 하세요.
+       - `$ dig your-subdomain.your-domain.tld` 명령어를 실행해 DNS가 올바르게 설정되어 있는지 확인하세요. (명령어를 입력할 때 도메인 주소의 `http://`는 제외합니다.)
         
   5. (옵션) 커스텀 도메인 없이 설정 
       -  [`CNAME` 파일][cnameFile]을 삭제합니다.
