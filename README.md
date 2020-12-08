@@ -43,7 +43,7 @@
   3. 리퍼지토리를 인스턴스화 합니다.
       - 보일러플레이트를 새 리퍼지토리를 생성하길 원하는 경우
         - `spa-github-pages` 폴더에서 `$ git init` 명령어를 입력합니다. 그다음 `$ git add .`, `$ git commit -m "Add SPA for GitHub Pages boilerplate"` 명령어로 새 저장소를 초기화합니다.
-        - 프로젝트 페이지 사이트일 경우, 브랜치 이름을 `master`에서 `gh-pages`로 변경합니다. (`$ git branch -m gh-pages`). 개인 사용자 또는 기관 페이지 사이트일 경우 브랜치 이름을 `master`로 유지합니다.
+        - 프로젝트 페이지 사이트일 경우, 브랜치 이름을 `main`에서 `gh-pages`로 변경합니다. (`$ git branch -m gh-pages`). 개인 사용자 또는 기관 페이지 사이트일 경우 브랜치 이름을 `main`로 유지합니다.
         - 깃허브 홈페이지에서 빈 리퍼지토리를 생성합니다. (`readme.md`, `.gitignore`, `license` 파일을 추가하지 마세요) 로컬 리퍼지토리에 원격 리퍼지토리를 추가합니다. (`$ git remote add origin <your-new-github-repo-url>`)
         - 현재 로컬 폴더 이름인 `spa-github-pages`를 원하는 이름으로 바꿉니다. (예 `프로젝트-이름`)
         
@@ -70,7 +70,7 @@
 
   6. `$ npm install`로 리액트와 의존성 패키지를 설치합니다. 이후 `$ npm run build`로 빌드 내용을 업데이트합니다.
   
-  7. `$ git add .` 명령어 입력 후, `$ git commit -m "Update boilerplate for use with my domain"` 커밋 메시지를 작성하고, 깃허브에 푸시합니다. (프로젝트 페이지일 경우 `$ git push origin gh-pages` 를 입력, 사용자 또는 기관 페이지일 경우 `$ git push origin master`를 입력) 도메인에 사이트가 게시되어야 합니다.
+  7. `$ git add .` 명령어 입력 후, `$ git commit -m "Update boilerplate for use with my domain"` 커밋 메시지를 작성하고, 깃허브에 푸시합니다. (프로젝트 페이지일 경우 `$ git push origin gh-pages` 를 입력, 사용자 또는 기관 페이지일 경우 `$ git push origin main`를 입력) 도메인에 사이트가 게시되어야 합니다.
   
   8. 내 사이트를 만들어 보세요.
       - 리액트 컴포넌트를 작성하고, 라우터를 추가하고, 스타일링을 적용해보세요.
